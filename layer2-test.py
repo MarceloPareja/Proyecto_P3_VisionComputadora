@@ -2,7 +2,7 @@ from ultralytics import YOLO
 
 def main():
     #Importa el modelo de poses
-    model = YOLO("runs/pose/layer2-model/weights/best.pt")
+    model = YOLO("layer2-model.pt")
 
 
     # Probar el modelo con un video
