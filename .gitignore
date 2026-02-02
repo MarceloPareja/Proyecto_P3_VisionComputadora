@@ -219,3 +219,9 @@ __marimo__/
 myvenv/
 runs/
 
+#Quitar imagenes de entrenamiento 
+
+*/*/images/
+*/*/labels/
+
+

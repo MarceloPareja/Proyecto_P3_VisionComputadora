@@ -1,0 +1,14 @@
+path: Datasets/Capa2DetecctionPose
+
+train: images/train
+val: images/val
+
+nc: 5
+names:
+  0: dog
+  1: cat
+  2: sheep
+  3: horse
+  4: cow
+
+kpt_shape: [20, 3]
