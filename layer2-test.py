@@ -6,7 +6,7 @@ def main():
 
 
     # Probar el modelo con un video
-    results = model.track(source="Videos/dogs1.mp4", show=True, save=True)
+    results = model.track(source="Videos/farm1.mp4", show=True, save=True)
     # Valida el modelo e imprime métricas
     metrics = model.val()
     print(metrics)

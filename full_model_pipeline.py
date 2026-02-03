@@ -6,8 +6,22 @@ def main():
     layer2_model = YOLO("layer2-model.pt")
     layer3_model = YOLO("layer3-model.pt")
 
-    cap = cv2.VideoCapture("Videos/dogs1.mp4")
+    cap = cv2.VideoCapture("Videos/dogbite.mp4")
 
+    # Propiedades del video original
+    width  = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    fps    = cap.get(cv2.CAP_PROP_FPS)
+
+    # Códec y salida
+    fourcc = cv2.VideoWriter_fourcc(*"mp4v")  # también puedes probar 'XVID'
+    out = cv2.VideoWriter(
+        "Videos/bitedog.mp4",
+        fourcc,
+        fps,
+        (width, height)
+    )
+    
     while cap.isOpened():
         ret, frame = cap.read()
         if not ret:
@@ -39,10 +53,12 @@ def main():
                 cv2.circle(frame, (int(x), int(y)), 3, (0,255,0), -1)
 
             cv2.rectangle(frame, (x1, y1), (x2, y2), (255,0,0), 2)
+            out.write(frame)
             cv2.imshow("Pipeline Pose", frame)
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
     cap.release()
+    out.release()
     cv2.destroyAllWindows()
 
 if __name__ == "__main__":
